@@ -23,15 +23,3 @@ Wymagania realizuj zgodnie z techniką **TDD** (_Test-driven-development_):
 5. W przypadku błędnego kodu powinien być zwracany wyjątek _ArgumentException_ z komunikatem _"Invalid discount code"_
 
 [6. Dodaj rabat 50%, który jest naliczany jednorazowo na podstawie kodu z puli kodów.]
-
-Pamiętaj o robieniu na bieżąco commitów do Gita.
-
-## Punktacja
-
-| Nazwa zadania       | Punkty |
-| ------------------- | ------ |
-| Nazewnictwo         | 1 pkt  |
-| Pokrycie testami    | 2 pkt  |
-| Refaktoring         | 2 pkt  |
-| Dodatkowe wymaganie | 1 pkt  |
-| Wzorce Projektowe   | 1 pkt  |
