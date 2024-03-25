@@ -18,7 +18,7 @@ namespace CalculatorLibrary
                 throw new ArgumentException("Negatives not allowed");
             }
             IDiscountStrategy strategy = _discountFactory.Create(discountCode);
-            return price - strategy.CalculateDiscount(price);
+            return Math.Min(price - strategy.CalculateDiscount(price), 0);
         }
     }
 }
