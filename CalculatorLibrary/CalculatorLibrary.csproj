@@ -42,8 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calculator.cs" />
+    <Compile Include="DiscountCalculatorFactory.cs" />
     <Compile Include="GenerateCode.cs" />
     <Compile Include="GlobalVariables.cs" />
+    <Compile Include="IDiscountFactory.cs" />
+    <Compile Include="IDiscountStrategy.cs" />
+    <Compile Include="PercentageDiscountStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
