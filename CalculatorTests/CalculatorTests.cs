@@ -3,6 +3,13 @@ namespace CalculatorTests
 {
     public class CalculatorTests
     {
+        private Calculator sut;
+
+        public CalculatorTests()
+        {
+            this.sut = new Calculator(new DiscountCalculatorFactory());
+        }
+
         [Theory]
         [InlineData(10)]
         public void CalculateDiscount_EmptyCode_ShouldnReturn10(decimal price)
@@ -10,7 +17,7 @@ namespace CalculatorTests
             //Arange
             var code = string.Empty;
             //Act
-            price = Calculator.CalculateDiscount(price, code);
+            price = sut.CalculateDiscount(price, code);
             //Assert
             Assert.Equal(10, price);
         }
@@ -22,7 +29,7 @@ namespace CalculatorTests
             //Arange
             string code = GlobalVariables.SAVE10NOW;
             //Act
-            price = Calculator.CalculateDiscount(price, code);
+            price = sut.CalculateDiscount(price, code);
             //Assert
             Assert.Equal(9, price);
         }
@@ -34,7 +41,7 @@ namespace CalculatorTests
             //Arange
             string code = GlobalVariables.DISCOUNT20OFF;
             //Act
-            price = Calculator.CalculateDiscount(price, code);
+            price = sut.CalculateDiscount(price, code);
             //Assert
             Assert.Equal(8, price);
         }
@@ -46,7 +53,7 @@ namespace CalculatorTests
             //Arange
             string code = GlobalVariables.DISCOUNT20OFF;
             //Act
-            var exception = Assert.Throws<ArgumentException>(() => Calculator.CalculateDiscount(price, code));
+            var exception = Assert.Throws<ArgumentException>(() => sut.CalculateDiscount(price, code));
             //Assert
             Assert.Equal("Negatives not allowed", exception.Message);
         }
@@ -57,7 +64,7 @@ namespace CalculatorTests
         {
             //Arange
             //Act
-            var exception = Assert.Throws<ArgumentException>(() => Calculator.CalculateDiscount(price, code));
+            var exception = Assert.Throws<ArgumentException>(() => sut.CalculateDiscount(price, code));
             //Assert
             Assert.Equal("Invalid discount code", exception.Message);
         }
@@ -69,7 +76,7 @@ namespace CalculatorTests
             //Arange
             string code = GenerateOneTimeCode.GenerateCode(5);
             //Act
-            price = Calculator.CalculateDiscount(price, code);
+            price = sut.CalculateDiscount(price, code);
             //Assert
             Assert.Equal(5, price);
         }
@@ -80,8 +87,8 @@ namespace CalculatorTests
         {//Arange
             string code = GenerateOneTimeCode.GenerateCode(5);
             //Act
-            price = Calculator.CalculateDiscount(price, code);
-            var exception = Assert.Throws<ArgumentException>(() => Calculator.CalculateDiscount(price, code));
+            price = sut.CalculateDiscount(price, code);
+            var exception = Assert.Throws<ArgumentException>(() => sut.CalculateDiscount(price, code));
             //Assert
             Assert.Equal("Invalid discount code", exception.Message);
         }
